@@ -93,6 +93,44 @@ h1 {
   margin: 10px 0 25px;
 }
 
+/* Countdown */
+.countdown-box {
+  margin: 25px 0;
+}
+
+.ml-logo {
+  width: 70px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 12px rgba(0,162,255,0.9));
+}
+
+.reset-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.time-box {
+  flex: 1;
+}
+
+.time-box h2 {
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.time-box span {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
 /* Menu */
 .menu {
   display: flex;
@@ -172,27 +210,6 @@ h1 {
   border-radius: 50%;
   transition: 0.3s;
 }
-
-/* Hover warna per platform */
-.social a.ig i:hover {
-  background: linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
-  box-shadow: 0 0 20px rgba(221,42,123,0.8);
-}
-
-.social a.tw i:hover {
-  background: #1da1f2;
-  box-shadow: 0 0 20px rgba(29,161,242,0.8);
-}
-
-.social a.yt i:hover {
-  background: #ff0000;
-  box-shadow: 0 0 20px rgba(255,0,0,0.8);
-}
-
-.social a.tt i:hover {
-  background: linear-gradient(135deg,#00f2ea,#ff0050);
-  box-shadow: 0 0 20px rgba(0,242,234,0.8);
-}
 </style>
 </head>
 
@@ -208,32 +225,66 @@ h1 {
     <h1>Call Me Relz</h1>
     <p class="subtitle">Gabut • Gamers • Random • Creator</p>
 
+    <!-- COUNTDOWN -->
+    <div class="countdown-box">
+      <div class="reset-title">RESET SEASON MOBILE LEGENDS</div>
+      <div class="countdown">
+        <div class="time-box">
+          <h2 id="days">00</h2>
+          <span>Days</span>
+        </div>
+        <div class="time-box">
+          <h2 id="hours">00</h2>
+          <span>Hours</span>
+        </div>
+        <div class="time-box">
+          <h2 id="minutes">00</h2>
+          <span>Minutes</span>
+        </div>
+        <div class="time-box">
+          <h2 id="seconds">00</h2>
+          <span>Seconds</span>
+        </div>
+      </div>
+    </div>
+
     <div class="menu">
       <a href="https://relzmlbb.github.io/coming-soon/" class="btn">✨My Girl</a>
-      <a href="https://relzmlbb.github.io/pesan-rahasia/"class="btn">💬Kirim Pesan Rahasia</a>
-      <a href="https://relzmlbb.github.io/info-riperr/"class="btn">🦹‍♂️Info Riper</a>
-      <a href="https://relzmlbb.github.io/tictactoegame-relz/"class="btn">🎮Tic Tac Toe</a>
-      <a href="https://relzmlbb.github.io/zonagamer/"class="btn">🚀Zona Gamers</a>
-      <a href="https://relzmlbb.github.io/coming-soon/"class="btn">📌KOL Indonesia MLBB</a>
+      <a href="https://relzmlbb.github.io/pesan-rahasia/" class="btn">💬Kirim Pesan Rahasia</a>
+      <a href="https://relzmlbb.github.io/info-riperr/" class="btn">🦹‍♂️Info Riper</a>
+      <a href="https://relzmlbb.github.io/tictactoegame-relz/" class="btn">🎮Tic Tac Toe</a>
+      <a href="https://relzmlbb.github.io/zonagamer/" class="btn">🚀Zona Gamers</a>
+      <a href="https://relzmlbb.github.io/coming-soon/" class="btn">📌KOL Indonesia MLBB</a>
     </div>
 
     <div class="social">
-      <a href="https://instagram.com/xxoneii" target="_blank" class="ig">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://t.me/relramlbb" target="_blank" class="tw">
-        <i class="fab fa-telegram"></i>
-      </a>
-      <a href="https://wa.me/6285719161772" target="_blank" class="yt">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="https://tiktok.com/@relzzz_raaa" target="_blank" class="tt">
-        <i class="fab fa-tiktok"></i>
-      </a>
+      <a href="https://instagram.com/xxoneii" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/relramlbb" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://wa.me/6285719161772" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://tiktok.com/@relzzz_raaa" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
 
   </div>
 </div>
+
+<script>
+const targetDate = new Date("2026-03-11T00:15:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days.toString().padStart(2, "0");
+  document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0");
+  document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0");
+  document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0");
+}, 1000);
+</script>
 
 </body>
 </html>
